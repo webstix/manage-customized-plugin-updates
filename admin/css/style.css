@@ -1,0 +1,996 @@
+/* Plugin page styles start */
+
+.clearfix:after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+.wsx-plugin-management {
+    max-width: 95%;
+    margin-top: 30px;
+}
+
+ul.list {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.wsx_plug_note_overlay,
+.wsx_plug_note_overlay_wrap {
+    bottom: 0;
+    top: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    display: none;
+    z-index: 99999;
+}
+
+.wsx_plug_page_alert_note,
+.mcpu-plugin-desc-wrap {
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0px 0px 32px #000;
+    margin: 14% auto;
+    padding: 20px 20px 30px 20px;
+    position: relative;
+    text-align: center;
+    width: 40%;
+}
+
+.wsx_pl_upd_btn {
+    cursor: pointer;
+}
+
+.wsx_plug_page_alert_note p::before {
+    content: "";
+    margin-right: 0px !important;
+}
+
+.wsx_close_pop,
+.wsx_mcpu_close_pop {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    color: #a51720;
+    width: 15px;
+    font-size: 30px;
+    line-height: 14px;
+    height: 15px;
+    text-align: center;
+}
+
+.wsx_close_pop:hover,
+.wsx_mcpu_close_pop:hover {
+    color: #a51720!important;
+}
+
+.wsx_pop_btm {
+    border-top: 1px solid #ddd;
+    padding-top: 17px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.wsx_pop_btm a,
+.send_email {
+    margin: 0px 10px;
+    color: #fff;
+    padding: 7px;
+    border-radius: 2px;
+}
+
+.wsx_pop_btm a.wsx_pop_cnt_btn,
+.send_email {
+    background: rgba(18, 162, 16, 0.82);
+}
+
+a.wsx_pop_upd_btn {
+    background: none;
+    color: #a51720;
+    float: right;
+    padding-top: 0;
+    position: relative;
+    right: -10px;
+    text-decoration: underline;
+    top: 0;
+}
+
+a.wsx_pop_upd_btn:hover {
+    opacity: 1!important;
+    text-decoration: none!important;
+}
+
+.wsx_pop_btm a:hover,
+.send_email:hover {
+    opacity: .8;
+}
+
+.send_email {
+    margin: 5px 0px 0px 0px;
+    border: none;
+    cursor: pointer;
+}
+
+.wsx_plug_page_alert_form_container p::before {
+    color: #f56e28!important;
+    content: "";
+}
+
+p.wsx_plug_page_notification_note::before {
+    content: "\f534";
+    color: #a51720!important;
+    margin-right: 5px;
+}
+
+.wsx_plug_page_notification_note.warning::before {
+    content: none;
+}
+
+p.wsx_plug_page_notification_note {
+    background: #fafafa;
+    border-left: 4px solid #a51720;
+    color: #a00;
+    padding: 10px;
+}
+
+.wsx_plug_page_alert_form_container {
+    text-align: left;
+}
+
+.wsx_plug_page_alert_form_container h3 {
+    text-align: center;
+}
+
+tr.wsx-plg-message.open {
+    display: block;
+}
+
+tr.tr_plug_msg_names label {
+    margin-left: 4px;
+    cursor: auto;
+    !important;
+}
+
+.tr_plug_msg_names label span.wsx-customized-plugins-list {
+    cursor: pointer;
+}
+
+tr.wsx-plg-message {
+    display: none;
+}
+
+tr.tr_plug_msg_names {
+    box-shadow: 0px 0px 2px #bbb;
+}
+
+tr.wsx-plg-message {
+    background: #eee;
+    box-shadow: 0px 3px 8px 0px #ddd inset;
+}
+
+tr.wsx-plg-message td {
+    padding: 25px 30px 30px 34px;
+}
+
+ul.wsx-entries-links {
+    display: block;
+    height: 5px;
+    margin: 30px 0 20px;
+}
+
+ul.wsx-entries-links li:last-child {
+    border: none;
+}
+
+ul.wsx-entries-links li {
+    float: left;
+    margin-right: 14px;
+    border-right: 1px solid #aaa;
+    padding-right: 14px;
+    line-height: 14px;
+}
+
+.wsx-dashboard-data,
+.wsx-dashboard-ads {
+    background: #fff;
+    padding: 10px;
+}
+
+.wsx-dash-quicklinks ul li {
+    float: left;
+    width: 32%;
+    margin: 0 auto 20px auto;
+    text-align: center;
+}
+
+.wsx-dash-quicklinks ul li a {
+    text-decoration: none;
+}
+
+.wsx-dash-quicklinks ul li a span {
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 40px;
+}
+
+.wsx-plugin-management hr {
+    margin: 20px 0;
+    max-width: 100%;
+}
+
+.wsx-plugin-management .wsx-block-plugin-messages hr {
+    margin: 0;
+    max-width: 100%;
+}
+
+.wsx-plugin-management h2 {
+    color: #23282d;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0 0 20px 0;
+    padding: 20px 0 4px;
+}
+
+.wsx-table-wrap th {
+    border-bottom: 0 none!important;
+    font-size: 17px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+
+/* Settins page CSS starts here */
+
+.white-shadow {
+    max-width: 90%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 8px #dedede;
+    border: 1px solid #dedede;
+    margin-top: 25px;
+    padding: 30px;
+}
+
+.wsx-table-wrap table {
+    border: 0 none;
+    max-width: 360px;
+}
+
+.wsx-table-wrap table label {
+    float: left;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.wsx-table-wrap table input {
+    float: right;
+    padding: 5px;
+}
+
+.user-select-wrap span {
+    float: left;
+    text-transform: capitalize;
+    width: 170px;
+}
+
+.user-select-wrap label {
+    display: inline-block;
+    float: none!important;
+    margin-top: 4px;
+    margin-bottom: 20px;
+}
+
+.user-select-wrap input {
+    float: none!important;
+    margin-bottom: 10px;
+}
+
+.wsx-plugin-management .button-primary {
+    float: none!important;
+    font-weight: bold;
+    line-height: 0!important;
+    padding: 15px!important;
+}
+
+.wsx-plugin-management .button-primary:hover {
+    background: #d54e21!important;
+    border-color: #d54e21!important;
+    color: #fff;
+    text-shadow: none!important;
+}
+
+
+/* Settins page CSS ends here */
+
+.wsx-dashboard-cont-top-wrap .wsx-dashboard-data.white-shadow,
+.wsx-dashboard-cont-top-wrap .wsx-dashboard-ads.white-shadow,
+.wsx-dashboard-cont-top-wrap .wsx-dash-quicklinks {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 8px #dedede;
+    float: left;
+    padding: 10px;
+    width: 45%!important;
+}
+
+.wsx-dashboard-cont-bottom-wrap .wsx-dash-quicklinks,
+.wsx-dashboard-cont-bottom-wrap .wsx-dashboard-ads.white-shadow {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 8px #dedede;
+    padding: 10px;
+    width: 45%!important;
+}
+
+.wsx-dashboard-cont-top-wrap.clearfix {
+    margin-bottom: 20px;
+}
+
+.wsx-dash-quicklinks {
+    margin-bottom: 30px;
+}
+
+.wsx-dashboard-cont .white-shadow {
+    margin-top: 0!important;
+}
+
+.wsx-dashboard-ads.white-shadow {
+    margin-right: 0!important;
+}
+
+
+/* Block Plugin Settins page CSS starts here */
+
+.plugins-list-wrap table {
+    border: 0 none!important;
+}
+
+.plugins-list-wrap .button-primary.top-btn {
+    margin-bottom: 20px;
+}
+
+.plugins-list-wrap .button-primary.btn-btm {
+    margin-top: 20px;
+}
+
+.form_plug_message .widefat th {
+    font-size: 16px;
+}
+
+.form_plug_message .widefat td,
+.form_plug_message .widefat th {
+    color: #555;
+    display: block;
+}
+
+.form_plug_message tr.tr_plug_msg_names {
+    display: block;
+    padding: 5px 0;
+}
+
+.form_plug_message .tr_plug_msg_names:hover,
+.form_plug_message .tr_plug_msg_names.checkbox-active {
+    background: #f1f1f1;
+}
+
+.form_plug_message tr.tr_plug_msg_names label {
+    cursor: pointer;
+    margin-left: 4px;
+    width: 96%;
+}
+
+
+/* Block Plugin Settins page CSS ends here */
+
+.widefat.wsx_form_entries tbody tr td {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    vertical-align: middle;
+}
+
+.white-shadow.wsx-log-wrap {
+    max-width: 93%;
+}
+
+.wsx-tablenav-top {
+    clear: both;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    width: 98%;
+}
+
+.wsx-plg-existing-entry .wsx_plug_page_notification_note {
+    background: #fff8e5!important;
+}
+
+.message_status {
+    color: #ff0000;
+}
+
+.wsx_plug_page_alert_form_container.active_form h3 {
+    margin-top: 0;
+}
+
+.wsx_plug_page_alert_form_container.active_form>hr {
+    margin-bottom: 17px;
+}
+
+.wsx_plug_page_alert_form_container.active_form label {
+    font-weight: bold;
+}
+
+.wsx_plug_page_alert_form_container.active_form input {
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+}
+
+.wsx_plug_page_alert_form_container.active_form input#email_subj {
+    width: 400px;
+}
+
+.wsx_plug_page_alert_form_container textarea {
+    border: 1px solid #ccc;
+}
+
+.show-email-content {
+    display: none;
+}
+
+.open-email {
+    color: #0073aa;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 5px;
+    text-decoration: underline!important;
+}
+
+.admin_user_name {
+    text-decoration: underline!important;
+}
+
+.open-email:focus,
+.open-email:hover,
+.admin_user_name:hover {
+    box-shadow: none!important;
+    text-decoration: none!important;
+}
+
+.plugin_status {
+    color: orange!important;
+    text-transform: capitalize;
+}
+
+.plugin_status.completed {
+    color: green!important;
+}
+
+.plugin-update-tr.wsx_plugin_note {
+    border-bottom: 1px solid #ddd!important;
+    top: -10px!important;
+    padding-bottom: 10px!important;
+    position: relative!important;
+}
+
+.plugins .plugin-update-tr .plugin-update {
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 10px;
+}
+
+.wsx-plg-existing-entry {
+    display: inline-block;
+}
+
+.wsx-plg-existing-entry .wsx_plug_page_notification_note.warning {
+    background: none!important;
+    border-left: 0 none!important;
+    padding: 0!important;
+}
+
+.cblockcircle,
+.crequestcircle {
+    display: inline-block;
+    padding: 2px 8px;
+}
+
+.cblockcircle {
+    background: #a51720;
+    color: #fff;
+    font-size: 11px;
+    display: inline-block;
+    padding: 2px 8px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.crequestcircle {
+    background: orange;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.crequest {
+    color: #fff;
+    font-size: 11px;
+}
+
+.wsx_plugin_note .plugin-update {
+    box-shadow: 0 0 0!important;
+}
+
+.wsx_plugin_note .update-message {
+    margin-bottom: -10px!important;
+}
+
+.cblockcircle-wrap {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.cblockcircle-wrap::before {
+    content: none!important;
+}
+
+.cblockcircle-wrap {
+    display: inline-block;
+    margin-right: 15px!important;
+}
+
+.txt-center {
+    margin: 0 0 20px;
+    text-align: center;
+}
+
+.wsx_plug_page_alert_note_container p {
+    height: 100px;
+    overflow-y: scroll;
+    padding: 10px;
+    text-align: left;
+}
+
+.wsx-plg-message input::placeholder {
+    color: #ccc;
+}
+
+.wsx-plg-message input::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #ccc;
+}
+
+.wsx-plg-message input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #ccc;
+}
+
+.wsx-plg-message input:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #ccc;
+}
+
+.wsx-plg-message input::-moz-placeholder {
+    /* Firefox 18- */
+    color: #ccc;
+}
+
+#email_subj::-moz-placeholder,
+.email_cont::-moz-placeholder {
+    color: #aaa;
+}
+
+#email_subj::-webkit-input-placeholder,
+.email_cont::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #aaa;
+}
+
+#email_subj::-moz-placeholder,
+.email_cont::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #aaa;
+}
+
+#email_subj:-ms-input-placeholder,
+.email_cont:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #aaa;
+}
+
+.update_completed {
+    background: green;
+    border-radius: 2px;
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    margin-left: 16px;
+    padding: 2px 8px;
+}
+
+.plugin_status>span {
+    background: orange;
+    border-radius: 2px;
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    padding: 4px 8px;
+}
+
+.plugin_status.completed>span {
+    background: green;
+    border-radius: 2px;
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    padding: 4px 8px;
+}
+
+.last-five-entries {
+    width: 100%;
+}
+
+.last-five-entries td,
+.last-five-entries th {
+    padding: 0 0 10px;
+    text-align: left;
+}
+
+.last-five-entries .plugin_status,
+.last-five-entries .plugin_status.completed {
+    border: 0 none!important;
+}
+
+.wsx-plg-message textarea {
+    width: 100%;
+}
+
+
+/* Dash Icons styles starts here */
+
+.wsx-dash-quicklinks>ul {
+    clear: both;
+    overflow: hidden;
+}
+
+.dash-icons {
+    display: block;
+    text-indent: -9999px;
+    width: 100px;
+    height: 82px;
+    background-size: 100px 82px;
+}
+
+.wsx-mark-as-customized {
+    background: url("images/svg/mark-as-customized.svg") no-repeat left top;
+    display: inline-block;
+    text-indent: -9999px;
+    width: 48px;
+    height: 48px;
+    background-size: 48px 48px;
+}
+
+.wsx-mark-as-customized-text {
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: 25px;
+}
+
+.wsx-plugins-icons-text {
+    margin-left: -15px;
+    vertical-align: 25px;
+}
+
+.wsx-block-plugin-messages .wsx-plugins-icons-text {
+    vertical-align: 35px!important;
+}
+
+.dash-icons.wsx-settings-icon,
+.dash-icons.wsx-plugins-icons,
+.dash-icons.wsx-logs-icons {
+    background-size: 48px 48px;
+    background-position: center center;
+}
+
+.toplevel_page_wsx_plugin_manag .wp-menu-image.dashicons-before.dashicons-admin-settings::before {
+    content: none;
+}
+
+.toplevel_page_wsx_plugin_manag .wp-menu-image.dashicons-before.dashicons-admin-settings {
+    background: url("images/svg/mark-as-customized.svg") no-repeat left top;
+    background-position: 4px 4px;
+    background-repeat: no-repeat;
+    background-size: 28px 28px;
+}
+
+.wsx-dashboard-wrap .wsx-dashboard-ads.white-shadow>h3,
+.wsx-dash-quicklinks>h3,
+.wsx-dash-intro>h3 {
+    border-bottom: 1px solid #ddd;
+    margin: 0 0 20px;
+    padding-bottom: 15px;
+}
+
+
+/* Dash Icons styles ends here */
+
+.wsx-txt-small {
+    font-size: 12px;
+    left: -355px;
+    position: relative;
+}
+
+.wsx-txt-small .webstix {
+    position: relative;
+    top: 10px;
+}
+
+.plugin_current_status {
+    float: right;
+}
+
+.read-more-trans {
+    margin: 10px 0;
+    text-align: right;
+}
+
+.read-more-trans>a {
+    display: block;
+    margin-right: 30px;
+}
+
+.tr_plug_msg_names .plugin_current_status {
+    background: gray;
+    color: #fff;
+    font-size: 11px;
+    display: inline-block;
+    padding: 2px 8px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    margin: 0 0 -10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.tr_plug_msg_names .plugin_current_status.active {
+    background: #333;
+}
+
+.wsx-plugin-list {
+    border-image: none;
+    color: #32373c;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px 10px 0 10px;
+    width: 93.5%;
+}
+
+.wsx-table-wrap.white-shadow {
+    padding-top: 20px!important;
+}
+
+table.widefat.wsx_form_entries tr:nth-child(2n+1) {
+    background-color: #f9f9f9;
+}
+
+table.widefat.wsx_form_entries {
+    width: 98%;
+}
+
+table.widefat.wsx_form_entries thead tr {
+    background: #fff!important;
+}
+
+.wsx-mcpu-pagination .tablenav-pages {
+    margin-right: 15px!important;
+}
+
+/* Dashboard widget syles starts here */
+#wsx_mcpu_custom_plugins h2 {
+    color: red;
+}
+
+.wsx-mcpu-admin-list {
+    list-style-position: inside;
+    margin-left: 15px;
+}
+
+.wsx-mcpu-admin-list li {
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    margin-bottom: 18px;
+    padding-bottom: 15px;
+}
+
+.wsx-mcpu-admin-list li .mcpu-plugin-details {
+    color: #333;
+    display: inline-block;
+    font-weight: normal;
+}
+
+.wsx-mcpu-admin-list li::before {
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em
+}
+
+.wsx-mcpu-admin-list span {
+    color: #333;
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 25px;
+    margin-right: 6px;
+    width: 205px;
+}
+
+#wsx_mcpu_custom_plugins .inside {
+    padding-bottom: 20px!important;
+}
+
+.wsx_mcpu_read_more {
+    display: block;
+    font-weight: bold;
+    text-align: right;
+}
+.mcpu-head-wrap {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.wsx_mcpu_read_more::after {
+    color: #124964;
+    content: ">>";
+    display: inline-block;
+    margin-right: 0;
+    width: 1.3em;
+}
+
+.ui-dialog .ui-dialog-title {
+    text-align: center;
+    width: 100%;
+}
+
+.mcpu-plugin-desc {
+    text-align: left;
+}
+
+.mcpu-plugin-desc p {
+    height: 100px;
+    height: 100px;
+    overflow-y: scroll;
+    padding: 10px;
+    text-align: left;
+}
+
+.mcpu-plugin-desc .txt-center {
+    font-size: 16px!important;
+    font-weight: bold!important;
+    margin-bottom: 20px!important;
+    text-align: center!important;
+}
+
+.mcpu-head-wrap>span {
+    color: #333;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    width: 20%;
+}
+
+.mcpu-head-wrap span:first-child {
+    margin-left: 10px;
+    width: auto!important;
+}
+
+.mcpu-head-wrap span:last-child {
+    width: 72%!important;
+}
+
+.mcpu-cpn-plugin {
+    display: inline-block;
+    outline: 0 none;
+}
+/* Dashboard widget syles ends here */
+
+/* Meida queries CSS starts here */
+
+@media screen and (min-width: 768px) and (max-width: 1060px) {
+    .wsx-dashboard-data.white-shadow,
+    .wsx-dashboard-ads.white-shadow {
+        width: 42%!important;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .wsx_plug_page_alert_note {
+        width: 75%;
+        margin: 5% auto;
+    }
+    .wsx-dashboard-data.white-shadow,
+    .wsx-dashboard-ads.white-shadow {
+        width: 90%!important;
+    }
+    .dash-icons {
+        background-position: center center!important;
+        background-size: 50px 50px!important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .wsx-dashboard-data,
+    .wsx-dashboard-ads {
+        width: 45%;
+        margin-right: 1%;
+        float: left;
+    }
+    .wsx-dashboard-ads {
+        margin-right: 0!important;
+        width: 50%!important;
+    }
+    .wsx-dashboard-cont .white-shadow {
+        margin-top: 0!important;
+        margin-bottom: 10px!important;
+    }
+    .wsx-dashboard {
+        min-height: 500px;
+    }
+}
+
+
+/* Mobile Portrait and Landscape */
+
+@media screen and (max-width: 767px) {
+    .wsx-dashboard-data.white-shadow,
+    .wsx-dashboard-ads.white-shadow {
+        margin-bottom: 20px;
+    }
+    .dash-icons {
+        background-position: center center!important;
+        background-size: 40px 40px!important;
+    }
+    .wsx-table-wrap table label {
+        float: none;
+    }
+    .wsx-table-wrap table input {
+        float: none;
+    }
+    .wsx-table-wrap table input[type="text"],
+    .wsx-table-wrap table input[type="email"],
+    .wsx-table-wrap table input[type="number"] {
+        font-size: 13px!important;
+        padding: 3px 5px!important;
+        width: 95%!important;
+    }
+    .wsx-plg-message textarea {
+        font-size: 13px;
+        width: 98%;
+    }
+    .white-shadow.wsx-log-wrap .alignleft.actions.bulkactions {
+        display: block;
+        float: none;
+        margin-bottom: 20px;
+    }
+    .white-shadow.wsx-log-wrap .alignright {
+        float: none!important;
+        margin-bottom: 20px;
+    }
+    ul.wsx-entries-links {
+        clear: both;
+        height: auto;
+        overflow: hidden;
+    }
+}
+/* Meida queries CSS starts here */
