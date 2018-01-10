@@ -35,7 +35,7 @@ if (isset($_POST['submit-pm']))
       if (isset($_POST['wsx_pl_msg_list_' . $i]))
       {
 
-        $customized_plugins_entries = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".$wsx_customized_plugins." WHERE `plugin_code` ='%s'", $_POST['wsx_pl_code_' . $i] ));
+        $customized_plugins_entries = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".$wsx_customized_plugins." WHERE `plugin_code` ='%s'", sanitize_text_field($_POST['wsx_pl_code_' . $i]) ));
         if (count($customized_plugins_entries) > 0)
         {
           $checkbox_status = "Disable";
@@ -44,10 +44,10 @@ if (isset($_POST['submit-pm']))
             $checkbox_status = "Enable";
           }
          
-          $wpdb->query( $wpdb->prepare("UPDATE ".$wsx_customized_plugins." SET `customization_details`='%s', plugin_status='%s', `mc_current_status` ='%s' WHERE `plugin_name` = '%s'", $_POST['plugin_description_' . $i], $_POST['wsx_plugin_current_status_' . $i], $checkbox_status, $_POST['wsx_pl_names_' . $i]));
+          $wpdb->query( $wpdb->prepare("UPDATE ".$wsx_customized_plugins." SET `customization_details`='%s', plugin_status='%s', `mc_current_status` ='%s' WHERE `plugin_name` = '%s'", sanitize_textarea_field($_POST['plugin_description_' . $i]), sanitize_text_field($_POST['wsx_plugin_current_status_' . $i]), sanitize_text_field($checkbox_status), sanitize_text_field($_POST['wsx_pl_names_' . $i]) ));
         } else
         {
-          $wsx_mcpu_insert_query = $wpdb->prepare("INSERT INTO `$wsx_customized_plugins` (`ID`, `plugin_name`, `plugin_code`, `customization_details`, `plugin_status`, `mc_current_status`, `plugin_deleted`, `plugin_marked_by`, `plugin_marked_on`) values (%d, %s, %s, %s, %s, %s, %d, %s, %s)", "", sanitize_text_field($_POST['wsx_pl_names_' . $i]), sanitize_text_field($_POST['wsx_pl_code_' . $i]), sanitize_textarea_field($_POST['plugin_description_' . $i]), sanitize_text_field($_POST['wsx_plugin_current_status_' . $i]), "Enable", 0, sanitize_text_field($get_current_user_name), sanitize_text_field($current_date_time));
+          $wsx_mcpu_insert_query = $wpdb->prepare("INSERT INTO `$wsx_customized_plugins` (`ID`, `plugin_name`, `plugin_code`, `customization_details`, `plugin_status`, `mc_current_status`, `plugin_deleted`, `plugin_marked_by`, `plugin_marked_on`) values (%d, %s, %s, %s, %s, %s, %d, %s, %s)", "", sanitize_text_field($_POST['wsx_pl_names_' . $i]), sanitize_text_field($_POST['wsx_pl_code_' . $i]), sanitize_textarea_field($_POST['plugin_description_' . $i]), sanitize_text_field($_POST['wsx_plugin_current_status_' . $i]), sanitize_text_field("Enable"), 0, sanitize_text_field($get_current_user_name), sanitize_text_field($current_date_time) );
           
           $wpdb->query($wsx_mcpu_insert_query);
 
@@ -56,12 +56,12 @@ if (isset($_POST['submit-pm']))
       {
         $checkbox_status = "Disable";
         
-      $customized_plugins_entries = $wpdb->get_results( $wpdb->prepare("SELECT * FROM " . $wsx_customized_plugins . " WHERE plugin_code ='%s'", $_POST['wsx_pl_code_' . $i] ));
+      $customized_plugins_entries = $wpdb->get_results( $wpdb->prepare("SELECT * FROM " . $wsx_customized_plugins . " WHERE plugin_code ='%s'", sanitize_text_field($_POST['wsx_pl_code_' . $i]) ));
 
 
         if (count($customized_plugins_entries) > 0)
         {
-          $wpdb->query( $wpdb->prepare("UPDATE ".$wsx_customized_plugins." SET customization_details='%s', plugin_status='%s', mc_current_status ='%s' WHERE `plugin_name` = '%s'", $_POST['plugin_description_' . $i], $_POST['wsx_plugin_current_status_' . $i], $checkbox_status, $_POST['wsx_pl_names_' . $i]));
+          $wpdb->query( $wpdb->prepare("UPDATE ".$wsx_customized_plugins." SET customization_details='%s', plugin_status='%s', mc_current_status ='%s' WHERE `plugin_name` = '%s'", sanitize_textarea_field($_POST['plugin_description_' . $i]), sanitize_text_field($_POST['wsx_plugin_current_status_' . $i]), sanitize_text_field($checkbox_status), sanitize_text_field($_POST['wsx_pl_names_' . $i]) ));
         } // End of update part
       } // End of Insert/Update loop.
     } // End of for loop
@@ -105,7 +105,7 @@ function wsx_mcpu_plugin_messages()
     global $wpdb;
     
     $customized_plugins = $wpdb->prefix . 'mcpu_customized_plugins';
-    $plugin_entries = $wpdb->get_results( $wpdb->prepare("SELECT * FROM " .$customized_plugins. " WHERE `plugin_name` = '%s'", $val['Name']));
+    $plugin_entries = $wpdb->get_results( $wpdb->prepare("SELECT * FROM " .$customized_plugins. " WHERE `plugin_name` = '%s'", sanitize_text_field($val['Name']) ));
 
     if ($wpdb->num_rows > 0)
     {
@@ -170,23 +170,23 @@ function wsx_mcpu_plugin_messages()
 
     <input type="hidden" name="<?php
     echo "wsx_plugin_id_" . $wsx_count_id; ?>" value="<?php
-    echo $wsx_count_id; ?>" /> 
+    echo sanitize_text_field($wsx_count_id); ?>" /> 
 
     <input type="hidden" name="<?php
     echo "wsx_plugin_current_status_" . $wsx_count_id; ?>" value="<?php
-    echo esc_attr($plugin_current_status); ?>" />
+    echo esc_attr(sanitize_text_field($plugin_current_status)); ?>" />
 
     <input type="hidden" name="<?php
     echo "wsx_pl_code_" . $wsx_count_id; ?>" value="<?php
-    echo esc_attr($key); ?>" />
+    echo esc_attr(sanitize_text_field($key)); ?>" />
 
     <input type="hidden" name="<?php
     echo "wsx_db_status_" . $wsx_count_id; ?>" value="<?php
-    echo $wsx_db_status; ?>" />
+    echo sanitize_text_field($wsx_db_status); ?>" />
 
     <input type="hidden" name="<?php
     echo "wsx_pl_names_" . $wsx_count_id; ?>" value="<?php
-    echo esc_attr($val['Name']); ?>" />
+    echo esc_attr(sanitize_text_field($val['Name'])); ?>" />
 
   <?php } // End of else part.
     $wsx_count_id++;
@@ -235,7 +235,7 @@ function wsx_mcpu_action_after_plugin_row($plugin_name)
   $customized_plugins = $wpdb->prefix . 'mcpu_customized_plugins';
   $plugins_marked_as_customized = $plugin_name;
 
-  $plugins_marked_entries = $wpdb->get_results( $wpdb->prepare("SELECT * FROM " . $customized_plugins . " WHERE `plugin_code` = '%s' AND `mc_current_status` = '%s'", $plugins_marked_as_customized, "Enable"));
+  $plugins_marked_entries = $wpdb->get_results( $wpdb->prepare("SELECT * FROM " . $customized_plugins . " WHERE `plugin_code` = '%s' AND `mc_current_status` = '%s'", sanitize_text_field($plugins_marked_as_customized), sanitize_text_field("Enable") ));
 
   if (count($plugins_marked_entries) > 0)
   {
@@ -298,7 +298,7 @@ function wsx_mcpu_custom_upgrade_core_message()
 function wsx_mcpu_custom_register_widgets()
 {
   global $wp_meta_boxes;
-  wp_add_dashboard_widget('wsx_mcpu_custom_plugins', __($wsx_company_name . ' Customized Plugin(s) List', 'wsx_rss_feeds') , 'wsx_mcpu_custom_plugins_box');
+  wp_add_dashboard_widget('wsx_mcpu_custom_plugins', __($wsx_company_name . ' Customized Plugin(s) List', 'manage-customized-plugin-updates') , 'wsx_mcpu_custom_plugins_box');
 }
 add_action('wp_dashboard_setup', 'wsx_mcpu_custom_register_widgets');
 
@@ -310,7 +310,7 @@ function wsx_mcpu_custom_plugins_box()
   $prefix = $wpdb->base_prefix;
  
   $customized_plugins = $wpdb->prefix . 'mcpu_customized_plugins';
-  $plugins_marked_entries = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".$customized_plugins." WHERE `mc_current_status` = '%s'", "Enable"));
+  $plugins_marked_entries = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".$customized_plugins." WHERE `mc_current_status` = '%s'", sanitize_text_field("Enable") ));
 
   if (count($plugins_marked_entries) > 0)
   {
@@ -342,7 +342,7 @@ function wsx_mcpu_custom_plugins_box()
       
     }
     echo '</ol>';
-    $wsx_mcpu_plugin_settings_url = esc_url(get_admin_url(null, 'options-general.php?page=manage-customized-plugin-updates-master%2Fadmin%2Fwsx-plugin-interface.php'));
+    $wsx_mcpu_plugin_settings_url = esc_url(get_admin_url(null, 'options-general.php?page=manage-customized-plugin-updates%2Fadmin%2Fwsx-plugin-interface.php'));
     echo '<a class="wsx_mcpu_read_more" href="'.$wsx_mcpu_plugin_settings_url.'">' . __('Go to Plugin settings', 'manage-customized-plugin-updates') . '</a>';
   } else {
       echo "<h3>No plugin(s) customized yet.</h3>";
