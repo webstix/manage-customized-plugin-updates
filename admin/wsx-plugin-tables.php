@@ -2,6 +2,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+wsx_mcpu_pl_mng_create_table();
+
 function wsx_mcpu_pl_mng_create_table()
 {
  // Create plugin related tables after activating the plugin.
