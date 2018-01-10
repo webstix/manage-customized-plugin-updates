@@ -47,10 +47,7 @@ if (isset($_POST['submit-pm']))
           $wpdb->query( $wpdb->prepare("UPDATE ".$wsx_customized_plugins." SET `customization_details`='%s', plugin_status='%s', `mc_current_status` ='%s' WHERE `plugin_name` = '%s'", sanitize_textarea_field($_POST['plugin_description_' . $i]), sanitize_text_field($_POST['wsx_plugin_current_status_' . $i]), sanitize_text_field($checkbox_status), sanitize_text_field($_POST['wsx_pl_names_' . $i]) ));
         } else
         {
-          $wsx_mcpu_insert_query = $wpdb->prepare("INSERT INTO `$wsx_customized_plugins` (`ID`, `plugin_name`, `plugin_code`, `customization_details`, `plugin_status`, `mc_current_status`, `plugin_deleted`, `plugin_marked_by`, `plugin_marked_on`) values (%d, %s, %s, %s, %s, %s, %d, %s, %s)", "", sanitize_text_field($_POST['wsx_pl_names_' . $i]), sanitize_text_field($_POST['wsx_pl_code_' . $i]), sanitize_textarea_field($_POST['plugin_description_' . $i]), sanitize_text_field($_POST['wsx_plugin_current_status_' . $i]), sanitize_text_field("Enable"), 0, sanitize_text_field($get_current_user_name), sanitize_text_field($current_date_time) );
-          
-          $wpdb->query($wsx_mcpu_insert_query);
-
+          $wpdb->query( $wpdb->prepare("INSERT INTO `$wsx_customized_plugins` (`ID`, `plugin_name`, `plugin_code`, `customization_details`, `plugin_status`, `mc_current_status`, `plugin_deleted`, `plugin_marked_by`, `plugin_marked_on`) values (%d, %s, %s, %s, %s, %s, %d, %s, %s)", "", sanitize_text_field($_POST['wsx_pl_names_' . $i]), sanitize_text_field($_POST['wsx_pl_code_' . $i]), sanitize_textarea_field($_POST['plugin_description_' . $i]), sanitize_text_field($_POST['wsx_plugin_current_status_' . $i]), sanitize_text_field("Enable"), sanitize_text_field(0), sanitize_text_field($get_current_user_name), sanitize_text_field($current_date_time) ));
         }
       } else
       {
@@ -170,23 +167,23 @@ function wsx_mcpu_plugin_messages()
 
     <input type="hidden" name="<?php
     echo "wsx_plugin_id_" . $wsx_count_id; ?>" value="<?php
-    echo sanitize_text_field($wsx_count_id); ?>" /> 
+    echo $wsx_count_id; ?>" /> 
 
     <input type="hidden" name="<?php
     echo "wsx_plugin_current_status_" . $wsx_count_id; ?>" value="<?php
-    echo esc_attr(sanitize_text_field($plugin_current_status)); ?>" />
+    echo esc_attr($plugin_current_status); ?>" />
 
     <input type="hidden" name="<?php
     echo "wsx_pl_code_" . $wsx_count_id; ?>" value="<?php
-    echo esc_attr(sanitize_text_field($key)); ?>" />
+    echo esc_attr($key); ?>" />
 
     <input type="hidden" name="<?php
     echo "wsx_db_status_" . $wsx_count_id; ?>" value="<?php
-    echo sanitize_text_field($wsx_db_status); ?>" />
+    echo $wsx_db_status; ?>" />
 
     <input type="hidden" name="<?php
     echo "wsx_pl_names_" . $wsx_count_id; ?>" value="<?php
-    echo esc_attr(sanitize_text_field($val['Name'])); ?>" />
+    echo esc_attr($val['Name']); ?>" />
 
   <?php } // End of else part.
     $wsx_count_id++;
@@ -288,7 +285,7 @@ function wsx_mcpu_custom_upgrade_core_message()
 
   foreach($plugins_customized_entries as $plugin_customized_entries)
   {
-    $wsx_customized_plugin_code = $plugin_customized_entries->plugin_code;
+    $wsx_customized_plugin_code = sanitize_text_field($plugin_customized_entries->plugin_code);
     echo "<input type='hidden' class='wsx_pl_upd_core_plg' value='" . $wsx_customized_plugin_code . "' />";
   }
   echo "</div>";
@@ -298,7 +295,7 @@ function wsx_mcpu_custom_upgrade_core_message()
 function wsx_mcpu_custom_register_widgets()
 {
   global $wp_meta_boxes;
-  wp_add_dashboard_widget('wsx_mcpu_custom_plugins', __($wsx_company_name . ' Customized Plugin(s) List', 'manage-customized-plugin-updates') , 'wsx_mcpu_custom_plugins_box');
+  wp_add_dashboard_widget('wsx_mcpu_custom_plugins', __($wsx_company_name . ' Customized Plugin(s) List', 'wsx_rss_feeds') , 'wsx_mcpu_custom_plugins_box');
 }
 add_action('wp_dashboard_setup', 'wsx_mcpu_custom_register_widgets');
 
@@ -342,7 +339,7 @@ function wsx_mcpu_custom_plugins_box()
       
     }
     echo '</ol>';
-    $wsx_mcpu_plugin_settings_url = esc_url(get_admin_url(null, 'options-general.php?page=manage-customized-plugin-updates%2Fadmin%2Fwsx-plugin-interface.php'));
+    $wsx_mcpu_plugin_settings_url = esc_url(get_admin_url(null, 'options-general.php?page=manage-customized-plugin-updates-master%2Fadmin%2Fwsx-plugin-interface.php'));
     echo '<a class="wsx_mcpu_read_more" href="'.$wsx_mcpu_plugin_settings_url.'">' . __('Go to Plugin settings', 'manage-customized-plugin-updates') . '</a>';
   } else {
       echo "<h3>No plugin(s) customized yet.</h3>";
