@@ -26,7 +26,7 @@ add_action('admin_init', 'wsx_mcpu_plugin_redirect');
 function wsx_mcpu_plugin_redirect() {
     if (get_option('wsx_mcpu_plugin_do_activation_redirect', false)) {
         delete_option('wsx_mcpu_plugin_do_activation_redirect');
-        wp_redirect(get_admin_url(null, 'options-general.php?page=manage-customized-plugin-updates%2Fadmin%2Fwsx-plugin-interface.php'));
+        wp_redirect(get_admin_url(null, 'options-general.php?page=manage-customized-plugin-updates-master%2Fadmin%2Fwsx-plugin-interface.php'));
     }
 }
 
@@ -51,6 +51,7 @@ function wsx_mcpu_active_admin_notice()
         delete_transient('wsx-mcpu-active-admin-notice');
     }
 }
+register_activation_hook(__FILE__, "wsx_mcpu_plugin_activate");
 
 // Uninstall hook.
 register_uninstall_hook('uninstall.php', 'wsx_mcpu_plugin_uninstall');
