@@ -22,8 +22,6 @@ function wsx_mcpu_plugin_activate()
 }
 add_action('admin_init', 'wsx_mcpu_plugin_redirect');
 
-
-
 // After activating the plugin, redirects to the plugin's settings page.
 function wsx_mcpu_plugin_redirect() {
     if (get_option('wsx_mcpu_plugin_do_activation_redirect', false)) {
