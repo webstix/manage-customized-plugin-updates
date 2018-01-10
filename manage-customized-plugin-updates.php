@@ -23,18 +23,18 @@ function wsx_mcpu_plugin_activate()
 add_action('admin_init', 'wsx_mcpu_plugin_redirect');
 
 
+
+// After activating the plugin, redirects to the plugin's settings page.
 function wsx_mcpu_plugin_redirect() {
     if (get_option('wsx_mcpu_plugin_do_activation_redirect', false)) {
         delete_option('wsx_mcpu_plugin_do_activation_redirect');
-        wp_redirect(esc_url(get_admin_url(null, 'options-general.php?page=manage-customized-plugin-updates-master%2Fadmin%2Fwsx-plugin-interface.php')));
+        wp_redirect(get_admin_url(null, 'options-general.php?page=manage-customized-plugin-updates%2Fadmin%2Fwsx-plugin-interface.php'));
     }
 }
 
-/* Add admin notice */
+// Admin Notice on Activation.
 add_action('admin_notices', 'wsx_mcpu_active_admin_notice');
-/**
- * Admin Notice on Activation.
- */
+
 function wsx_mcpu_active_admin_notice()
 {
     /* Check transient, if available display notice */
@@ -53,27 +53,21 @@ function wsx_mcpu_active_admin_notice()
         delete_transient('wsx-mcpu-active-admin-notice');
     }
 }
-register_activation_hook(__FILE__, "wsx_mcpu_plugin_activate");
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-plugin-name-deactivator.php
- * Upon deleting the plugin all the plugin tables will be removed from the database.
- */
-function wsx_mcpu_plugin_deactivate()
-{
-}
-register_deactivation_hook(__FILE__, "wsx_mcpu_plugin_deactivate");
+
+// Uninstall hook.
 register_uninstall_hook('uninstall.php', 'wsx_mcpu_plugin_uninstall');
+
+
 // Settings link on the plugins page
 add_filter('plugin_action_links_' . plugin_basename(__FILE__) , 'wsx_mcpu_plugin_settings_link');
 function wsx_mcpu_plugin_settings_link($wsx_mcpu_link)
 {
-    $wsx_mcpu_link[] = '<a href="' . esc_url(get_admin_url(null, 'options-general.php?page=manage-customized-plugin-updates-master%2Fadmin%2Fwsx-plugin-interface.php')) . '">' . __('Settings', 'wsx_mcpu_plugin_messages') . '</a>';
+    $wsx_mcpu_link[] = '<a href="' . esc_url(get_admin_url(null, 'options-general.php?page=manage-customized-plugin-updates%2Fadmin%2Fwsx-plugin-interface.php')) . '">' . __('Settings', 'wsx_mcpu_plugin_messages') . '</a>';
     return $wsx_mcpu_link;
 }
 include ('admin/wsx-plugin-interface.php');
 
-// enqueues our external font awesome stylesheet
+// Enqueues our external font awesome stylesheet
 function wsx_mcpu_enqueue_our_required_stylesheets()
 {
     wp_enqueue_style('plugin-upgrade-font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
