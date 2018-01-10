@@ -32,6 +32,7 @@ function wsx_mcpu_plugin_redirect() {
 
 register_activation_hook(__FILE__, "wsx_mcpu_plugin_activate");
 
+
 // Settings link on the plugins page
 add_filter('plugin_action_links_' . plugin_basename(__FILE__) , 'wsx_mcpu_plugin_settings_link');
 function wsx_mcpu_plugin_settings_link($wsx_mcpu_link)
@@ -39,7 +40,6 @@ function wsx_mcpu_plugin_settings_link($wsx_mcpu_link)
     $wsx_mcpu_link[] = '<a href="' . esc_url(get_admin_url(null, 'options-general.php?page=manage-customized-plugin-updates-master%2Fadmin%2Fwsx-plugin-interface.php')) . '">' . __('Settings', 'wsx_mcpu_plugin_messages') . '</a>';
     return $wsx_mcpu_link;
 }
-
 include ('admin/wsx-plugin-interface.php');
 
 // enqueues our external font awesome stylesheet
